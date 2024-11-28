@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roveri"
+version = "0.0.1"
+description = "TODO: change description of roveri"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version>"3.10"',
+]
+authors = [{name = "Agustin Zavala"}]
+license = {text = "MIT"}
+[project.optional-dependencies]
+testing = [
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "mypy>=1.13",
+    "flake8>=7.1",
+    "tox>=4.23"
+]
+
+
+[tool.setuptools.packages.find]
+# All the following settings are optional:
+where = ["src"]  # ["."] by default
+exclude = ["tests*"]  # empty by default
+
+[tool.setuptools.package-data]
+roveri = ["py.typed"]
+
+[tool.flake8]
+max-line-length = 160
+
+[tool.pytest.ini_options]
+addopts = "--cov=roveri"
+testpaths = [
+    "tests",
+]
+
+[tool.mypy]
+mypy_path = "src"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
